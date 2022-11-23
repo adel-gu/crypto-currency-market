@@ -8,7 +8,7 @@ const CoinList = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(retrieveCoins());
+    dispatch(retrieveCoins("all"));
   }, []);
 
   return (
