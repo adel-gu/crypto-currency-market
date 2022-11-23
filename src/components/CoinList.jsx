@@ -1,11 +1,9 @@
-import Coin from "./Coin";
+import Coin from './Coin';
 
-const CoinList = () => {
-  return (
-    <>
-      <Coin />
-    </>
-  )
-}
+const CoinList = () => (
+  <>
+    <Coin />
+  </>
+);
 
 export default CoinList;
