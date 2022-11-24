@@ -18,7 +18,7 @@ const coinSlice = createSlice({
   name: 'CryptoCoins/Coin',
   initialState: {
     coinDetails: {},
-    loading: false,
+    loading: true,
   },
   extraReducers: (builder) => {
     builder.addCase(retrieveCoinDetails.pending, (state, action) => {
