@@ -1,17 +1,13 @@
 import Card from 'react-bootstrap/Card';
-import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { retrieveCoinDetails } from '../redux/coins/coin';
+import { useNavigate } from 'react-router-dom'
 
 
 const Coin = (props) => {
   const { coin } = props;
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
   const hadnlNavigateDispatch = (coinId) => {
     navigate(`/coindetails/${coinId}`);
-    dispatch(retrieveCoinDetails(coinId));
   }
 
   return (
