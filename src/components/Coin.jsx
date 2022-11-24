@@ -1,17 +1,30 @@
 import Card from 'react-bootstrap/Card';
-import { useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'
 
-const Coin = () => {
+
+const Coin = (props) => {
+  const { coin } = props;
   const navigate = useNavigate();
+  const { coinsCategory } = useParams();
+
+  const hadnlNavigate = (coinId) => {
+    navigate(`/${coinsCategory}/${coinId}`);
+  }
+
   return (
-    <Card style={{ width: '10rem' }}>
-      <div className="display-3 text-center py-4">BTC</div>
-      <Card.Body className="py-0 text-end">
-        <Card.Title className="m-0">Bitcoin</Card.Title>
-        <Card.Text className="m-0">15750.43$</Card.Text>
-        <button type="button" onClick={() => navigate('/coindetails')}>go</button>
-      </Card.Body>
-    </Card>
+    <div className="col-md-3 col-sm-6 p-3 border">
+      <Card style={{width: "100%", height:"100%"}}>
+        <Card.Header>
+          <button type="button" className='' onClick={() => hadnlNavigate(coin.id)}>go</button>
+        </Card.Header>
+        <Card.Img variant="top" src={coin.image} className="w-25 mx-auto my-2"/>
+        <Card.Body className=" text-end">
+          <Card.Title className="m-0">{coin.name}</Card.Title>
+          <Card.Text className="m-0">{coin["current_price"]}$</Card.Text>
+        </Card.Body>
+      </Card>
+    </div>
   );
 };
 
