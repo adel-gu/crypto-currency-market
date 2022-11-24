@@ -10,7 +10,6 @@ import { retrieveCoins } from '../redux/coins/coins';
 const Home = () => {
   const cats = useSelector(state => state.cat);
   const dispatch = useDispatch();
-  const params = useParams();
   const navigate =  useNavigate();
 
   useEffect(() => {
