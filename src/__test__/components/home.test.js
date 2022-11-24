@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react';
-import Home from '../../routes/Home';
-import store from '../../redux/configureStore';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
+import Home from '../../routes/Home';
+import store from '../../redux/configureStore';
 
 describe('Home component', () => {
   test('should rendered correctly', () => {

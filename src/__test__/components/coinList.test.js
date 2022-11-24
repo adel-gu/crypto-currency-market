@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
-import store from '../../redux/configureStore';
 import { Provider } from 'react-redux';
+import store from '../../redux/configureStore';
 // Component
 import CoinList from '../../components/CoinList';
 
