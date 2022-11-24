@@ -1,20 +1,22 @@
 import Card from 'react-bootstrap/Card';
+import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom'
 
 
 const Coin = (props) => {
   const { coin } = props;
   const navigate = useNavigate();
+  const { coinsCategory } = useParams();
 
-  const hadnlNavigateDispatch = (coinId) => {
-    navigate(`/coindetails/${coinId}`);
+  const hadnlNavigate = (coinId) => {
+    navigate(`/${coinsCategory}/${coinId}`);
   }
 
   return (
     <div className="col-md-3 col-sm-6 p-3 border">
       <Card style={{width: "100%", height:"100%"}}>
         <Card.Header>
-          <button type="button" className='' onClick={() => hadnlNavigateDispatch(coin.id)}>go</button>
+          <button type="button" className='' onClick={() => hadnlNavigate(coin.id)}>go</button>
         </Card.Header>
         <Card.Img variant="top" src={coin.image} className="w-25 mx-auto my-2"/>
         <Card.Body className=" text-end">

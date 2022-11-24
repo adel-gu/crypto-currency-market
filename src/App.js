@@ -18,8 +18,10 @@ function App() {
     <Provider store={store}>
       <NavBar />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/coindetails/:coinId" element={<CoinDetails />} />
+        <Route path="/" element={<Home />}>
+          <Route path="/:coinsCategory" element={<Home />}></Route>
+        </Route>
+        <Route path="/:coinsCategory/:coinId" element={<CoinDetails />} />
       </Routes>
     </Provider>
   );
