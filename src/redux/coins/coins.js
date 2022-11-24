@@ -10,10 +10,7 @@ const apiGenerator = (filter) => {
   }
 };
 
-const API_URL_COIN = 'https://api.coingecko.com/api/v3/coins';
-
 // Action String
-const GET_COIN = 'get-coin';
 const GET_COINS = 'get-coins';
 
 // Actions thunks
@@ -23,25 +20,19 @@ export const retrieveCoins = createAsyncThunk(GET_COINS, async (filter) => {
   return data;
 });
 
-export const retrieveCoinDetails = createAsyncThunk(GET_COIN, async (id) => {
-  const res = fetch(`${API_URL_COIN}/${id}`);
-  const data = (await res).json();
-  return data;
-});
-
 // Reducers
 const coinsSlice = createSlice({
-  name: 'CryptoCoins',
+  name: 'CryptoCoins/Coins',
   initialState: {
     coins: [],
-    coinDetails: {},
+    loading: false,
   },
   extraReducers: (builder) => {
     builder.addCase(retrieveCoins.fulfilled, (state, action) => {
-      state.coins = action.payload;
-    });
-    builder.addCase(retrieveCoinDetails.fulfilled, (state, action) => {
-      state.coinDetails = action.payload;
+      return {
+        ...state,
+        coins: action.payload,
+      };
     });
   },
 });
