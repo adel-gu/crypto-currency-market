@@ -21,19 +21,15 @@ const coinSlice = createSlice({
     loading: true,
   },
   extraReducers: (builder) => {
-    builder.addCase(retrieveCoinDetails.pending, (state, action) => {
-      return {
-        ...state,
-        loading: true,
-      };
-    });
-    builder.addCase(retrieveCoinDetails.fulfilled, (state, action) => {
-      return {
-        ...state,
-        coinDetails: action.payload,
-        loading: false,
-      };
-    });
+    builder.addCase(retrieveCoinDetails.pending, (state) => ({
+      ...state,
+      loading: true,
+    }));
+    builder.addCase(retrieveCoinDetails.fulfilled, (state, action) => ({
+      ...state,
+      coinDetails: action.payload,
+      loading: false,
+    }));
   },
 });
 

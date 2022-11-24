@@ -7,8 +7,8 @@ import coins from './coins/coins';
 const rootReducer = {
   reducer: {
     cat: categories,
-    coins: coins,
-    coin: coin,
+    coins,
+    coin,
   },
 };
 

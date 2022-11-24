@@ -28,12 +28,10 @@ const coinsSlice = createSlice({
     loading: false,
   },
   extraReducers: (builder) => {
-    builder.addCase(retrieveCoins.fulfilled, (state, action) => {
-      return {
-        ...state,
-        coins: action.payload,
-      };
-    });
+    builder.addCase(retrieveCoins.fulfilled, (state, action) => ({
+      ...state,
+      coins: action.payload,
+    }));
   },
 });
 
