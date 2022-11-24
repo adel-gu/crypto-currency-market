@@ -19,7 +19,7 @@ function App() {
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="coindetails" element={<CoinDetails />} />
+        <Route path="/coindetails/:coinId" element={<CoinDetails />} />
       </Routes>
     </Provider>
   );
