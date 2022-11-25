@@ -1,10 +1,23 @@
-import Container from 'react-bootstrap/Container';
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+// Styled & bootstrap
 import { Card, ListGroup } from 'react-bootstrap';
-import { retrieveCoinDetails } from '../redux/coins/coin';
+import styled from 'styled-components';
+// React, Hooks and Redux
 import { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate, useParams } from 'react-router-dom';
+import { retrieveCoinDetails } from '../redux/coins/coin';
+
+// Styling the details card
+
+const DtailsCard = styled(Card)`
+  background: #0E0E23;
+  color: white;
+
+  & div {
+    background: #0E0E23;
+    color: white;
+  }
+`;
 
 const CoinDetails = () => {
   const coin = useSelector(state => state.coin);
@@ -17,28 +30,24 @@ const CoinDetails = () => {
   }, [])
 
   return (
-    <Container>
-      <button type="button" onClick={() => navigate(-1)}>Go Back</button>
+    <>
       {
         coin.loading ? (<p>Loading...</p>) :
-        (<Card>
-          <Card.Img variant="top" className="w-75 mx-auto" src={coin.coinDetails.image.large} />
+        (<DtailsCard className="py-5 border-0 rounded-0">
+          <Card.Img variant="top" className="w-50 mx-auto" src={coin.coinDetails.image.large} />
           <Card.Body>
             <Card.Title>{coin.coinDetails.name}</Card.Title>
             <Card.Text>{coin.coinDetails.description.en}</Card.Text>
           </Card.Body>
-          <ListGroup className="list-group-flush">
-            <ListGroup.Item>Category: {coin.coinDetails.categories[0]}</ListGroup.Item>
-            <ListGroup.Item>Market Ranking: {coin.coinDetails["market_cap_rank"]}</ListGroup.Item>
-            <ListGroup.Item>Market Cap: {coin.coinDetails["market_data"]["market_cap"]["usd"]}$</ListGroup.Item>
-            <ListGroup.Item>Current Price: {coin.coinDetails["market_data"]["current_price"]["usd"]}$</ListGroup.Item>
+          <ListGroup className="list-group-flush border rounded-0">
+            <ListGroup.Item><span className='fw-bold'>Category:</span> {coin.coinDetails.categories[0]}</ListGroup.Item>
+            <ListGroup.Item className="border"><span className='fw-bold'>Market Ranking:</span> {coin.coinDetails["market_cap_rank"]}</ListGroup.Item>
+            <ListGroup.Item className="border"><span className='fw-bold'>Market Cap:</span> {coin.coinDetails["market_data"]["market_cap"]["usd"]}$</ListGroup.Item>
+            <ListGroup.Item><span className='fw-bold'>Current Price:</span> {coin.coinDetails["market_data"]["current_price"]["usd"]}$</ListGroup.Item>
           </ListGroup>
-          <Card.Body>
-            <button type="button" onClick={() => navigate(-1)}>Go Back</button>
-          </Card.Body>
-        </Card>)
+        </DtailsCard>)
       }
-    </Container>
+    </>
   );
 };
 
