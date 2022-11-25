@@ -12,7 +12,7 @@ import { StyledButton } from './StyledButton';
 
 // Styled compoenent
 const StyledNav = styled(Navbar)`
-  background: #EC4C8B;
+  background: #0E0E23;
 `;
 
 const Logo = styled(GiFrozenBlock)`

@@ -10,7 +10,11 @@ const Btn = styled(Button)`
 
   &:hover {
     background: #e6d82f;
-    color: #EC4C8B;
+    color: #0E0E23;
+  };
+  &.btn-primary:focus {
+    background: #e6d82f;
+    color: #0E0E23;
   };
 `;
 
