@@ -3,12 +3,12 @@ import { Container, Navbar } from 'react-bootstrap';
 import styled from 'styled-components';
 // React Icons
 import { GiFrozenBlock } from 'react-icons/gi';
-import { BsGearFill, BsMicFill } from 'react-icons/bs';
 import { TiArrowLeftThick } from 'react-icons/ti';
+import { BsMicFill, BsGearFill } from 'react-icons/bs';
 // React hooks
 import { useNavigate } from 'react-router-dom';
 // Component
-import { StyledButton } from './StyledButton';
+import Btn from './StyledButton';
 
 // Styled compoenent
 const StyledNav = styled(Navbar)`
@@ -26,15 +26,22 @@ const NavBar = () => {
     <header>
       <StyledNav>
         <Container>
-          <StyledButton icon={<TiArrowLeftThick />} handlNavigate={() => navigate(-1)}/>
-          <Navbar.Brand className="mx-auto"><Logo className='display-6 fw-bold'/></Navbar.Brand>
+          <Btn variant="warning" type="button" className="d-flex justify-content-center align-items-center rounded-circle p-2" onClick={() => navigate(-1)}>
+            <TiArrowLeftThick />
+          </Btn>
+          <Navbar.Brand className="mx-auto"><Logo className="display-6 fw-bold" /></Navbar.Brand>
           <div className="d-flex justify-content-between align-items-center">
-            <StyledButton icon={<BsMicFill />} />
-            <StyledButton icon={<BsGearFill />} />
+            <Btn variant="warning" type="button" className="d-flex justify-content-center align-items-center rounded-circle p-2">
+              <BsMicFill />
+            </Btn>
+            <Btn variant="warning" type="button" className="d-flex justify-content-center align-items-center rounded-circle p-2">
+              <BsGearFill />
+            </Btn>
           </div>
         </Container>
       </StyledNav>
     </header>
-);
-}
+  );
+};
+
 export default NavBar;

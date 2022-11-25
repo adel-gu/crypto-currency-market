@@ -1,11 +1,12 @@
-// Bootstrap and styled-component
-import { Card, Button } from 'react-bootstrap';
-import styled from 'styled-components';
-// Icons
-import { BsArrowRightCircle } from 'react-icons/bs';
-import { StyledButton } from './StyledButton';
 // React Hooks
 import { useNavigate, useParams } from 'react-router-dom';
+// props
+import PropTypes from 'prop-types';
+// Bootstrap and styled-component
+import { Card } from 'react-bootstrap';
+import styled from 'styled-components';
+import { BsArrowRightCircle } from 'react-icons/bs';
+import Btn from './StyledButton';
 
 // Styling coin
 const CoinCmp = styled(Card)`
@@ -20,29 +21,49 @@ const CoinCmp = styled(Card)`
   };
 `;
 
-const Coin = (props) => {
-  const { coin } = props;
+const Coin = ({
+  id,
+  name,
+  image,
+  currentPrice,
+}) => {
   const navigate = useNavigate();
   const { coinsCategory } = useParams();
 
-  const hadnlNavigate = (coinId) => {
-    coinsCategory === undefined ? navigate(`/all/${coinId}`) : navigate(`/${coinsCategory}/${coinId}`)
-  }
+  const handleNavigate = (coinId) => {
+    if (coinsCategory === undefined) {
+      navigate(`/all/${coinId}`);
+      return;
+    }
+    navigate(`/${coinsCategory}/${coinId}`);
+  };
 
   return (
     <div className="col-6 col-md-4 p-0 border">
       <CoinCmp className="rounded-0 px-3 pt-1">
         <div className="d-flex justify-content-end align-items-center">
-          <StyledButton icon={<BsArrowRightCircle/>} handlNavigate={() => hadnlNavigate(coin.id)}/>
+          <Btn variant="warning" type="button" className="d-flex justify-content-center align-items-center rounded-circle p-2" onClick={() => handleNavigate(id)}>
+            <BsArrowRightCircle />
+          </Btn>
         </div>
-        <Card.Img variant="top" src={coin.image} className="w-25 mx-auto my-2"/>
+        <Card.Img variant="top" src={image} className="w-25 mx-auto my-2" />
         <Card.Body className=" text-end">
-          <Card.Title className="m-0">{coin.name}</Card.Title>
-          <Card.Text className="m-0">{coin["current_price"]}$</Card.Text>
+          <Card.Title className="m-0">{name}</Card.Title>
+          <Card.Text className="m-0">
+            {currentPrice}
+            $
+          </Card.Text>
         </Card.Body>
       </CoinCmp>
     </div>
   );
+};
+
+Coin.propTypes = {
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+  currentPrice: PropTypes.number.isRequired,
 };
 
 export default Coin;

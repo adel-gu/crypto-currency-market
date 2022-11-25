@@ -1,5 +1,5 @@
 // Styled and bootsrap
-import { Container, Nav, NavDropdown, Dropdown } from 'react-bootstrap';
+import { Nav, NavDropdown, Dropdown } from 'react-bootstrap';
 import styled from 'styled-components';
 
 // React, Routers & Redux
@@ -29,26 +29,33 @@ const DropMenu = styled(NavDropdown)`
 `;
 
 const Home = () => {
-  const cats = useSelector(state => state.cat);
+  const cats = useSelector((state) => state.cat);
   const dispatch = useDispatch();
-  const navigate =  useNavigate();
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(retrieveCat());
-  }, [])
+  }, []);
 
   const handlFilter = (id) => {
     dispatch(retrieveCoins(id));
     navigate(`/${id}`);
-  }
+  };
 
   return (
     <>
       <Nav>
         <DropMenu title="Categories" id="basic-nav-dropdown" className="bg-none mx-auto">
-          <Dropdown.Item key={"all"} onClick={() => handlFilter("all")}>All</Dropdown.Item>
+          <Dropdown.Item key="all" onClick={() => handlFilter('all')}>All</Dropdown.Item>
           {
-            cats.map(cat => (<NavDropdown.Item key={cat["category_id"]} onClick={() => handlFilter(cat["category_id"])}>{cat["name"]}</NavDropdown.Item>))
+            cats.map((cat) => (
+              <NavDropdown.Item
+                key={cat.category_id}
+                onClick={() => handlFilter(cat.category_id)}
+              >
+                {cat.name}
+              </NavDropdown.Item>
+            ))
           }
         </DropMenu>
       </Nav>
@@ -57,5 +64,6 @@ const Home = () => {
       </main>
     </>
   );
-}
+};
+
 export default Home;
