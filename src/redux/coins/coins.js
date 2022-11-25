@@ -33,7 +33,7 @@ const coinsSlice = createSlice({
       coins: action.payload,
       loading: false,
     }));
-    builder.addCase(retrieveCoins.pending, (state, action) => ({
+    builder.addCase(retrieveCoins.pending, (state) => ({
       ...state,
       loading: true,
     }));
