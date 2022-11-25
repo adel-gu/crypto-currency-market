@@ -14,12 +14,19 @@ import CoinList from '../components/CoinList';
 
 // Styling components
 const DropMenu = styled(NavDropdown)`
-  & a {
-    color: #0E0E23;
+  & > a {
+    color: #ffc107;
+  }
+
+  & > a:hover {
+    color: #f9d25d;
+  }
+
+  & > a:focus {
+    color: #f9d25d;
   }
 
   & div {
-    color: #0E0E23;
     max-height: 400px;
     overflow-y: scroll;
     padding-top: 0;
@@ -45,7 +52,7 @@ const Home = () => {
   return (
     <>
       <Nav>
-        <DropMenu title="Categories" id="basic-nav-dropdown" className="bg-none mx-auto">
+        <DropMenu title="Filter Currencies by Categories" id="basic-nav-dropdown" className="bg-none mx-auto mt-3 mb-5">
           <Dropdown.Item key="all" onClick={() => handlFilter('all')}>All</Dropdown.Item>
           {
             cats.map((cat) => (
