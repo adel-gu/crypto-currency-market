@@ -16,6 +16,6 @@ const Btn = styled(Button)`
 
 export const StyledButton = (props) => {
   return (
-    <Btn type="button" className="d-flex justify-content-center align-items-center rounded-circle   p-2" >{props.icon}</Btn>
+    <Btn type="button" className="d-flex justify-content-center align-items-center rounded-circle p-2" onClick={props.handlNavigate}>{props.icon}</Btn>
   )
 }
