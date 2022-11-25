@@ -1,6 +1,7 @@
 // Styled & bootstrap
 import { Card, ListGroup } from 'react-bootstrap';
 import styled from 'styled-components';
+import PuffLoader from 'react-spinners/PuffLoader';
 // React, Hooks and Redux
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -8,7 +9,6 @@ import { useParams } from 'react-router-dom';
 import { retrieveCoinDetails } from '../redux/coins/coin';
 
 // Styling the details card
-
 const DtailsCard = styled(Card)`
   background: #0E0E23;
   color: white;
@@ -31,7 +31,7 @@ const CoinDetails = () => {
   return (
     <>
       {
-      coin.loading ? (<p>Loading...</p>) : (
+      coin.loading ? (<PuffLoader className="mx-auto mt-3" color="#ffc107" size={150} />) : (
         <DtailsCard className="py-5 border-0 rounded-0">
           <Card.Img variant="top" className="w-50 mx-auto" src={coin.coinDetails.image.large} />
           <Card.Body>
