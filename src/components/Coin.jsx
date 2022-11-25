@@ -31,7 +31,7 @@ const Coin = (props) => {
 
   return (
     <div className="col-6 col-md-4 p-0 border">
-      <CoinCmp className="rounded-0">
+      <CoinCmp className="rounded-0 px-3 pt-1">
         <div className="d-flex justify-content-end align-items-center">
           <StyledButton icon={<BsArrowRightCircle/>} handlNavigate={() => hadnlNavigate(coin.id)}/>
         </div>
