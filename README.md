@@ -169,7 +169,7 @@ If you like this project please give it a Start ⭐️.
 
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
 
-I would like to thank: 
+I would like to thank:
 - [Nelson Sakwa](https://www.behance.net/sakwadesignstudio) for the website design system that inspired my design.
 - [David Hu](https://www.davidhu.io/) for the loader spinner react components.
 - [CoinGecko](https://www.coingecko.com/en/api/documentation) for the amazing API.
@@ -180,6 +180,6 @@ I would like to thank:
 
 ## 📝 License <a name="license"></a>
 
-This project is [MIT](./license) licensed.
+This project is [MIT](./License) licensed.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
